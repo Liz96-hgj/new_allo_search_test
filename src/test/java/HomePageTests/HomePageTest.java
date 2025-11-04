@@ -54,7 +54,6 @@ public class HomePageTest {
 
         Assert.assertTrue(productText.toLowerCase().contains("фен"));
 
-        driver.quit();
 
     }
 }
