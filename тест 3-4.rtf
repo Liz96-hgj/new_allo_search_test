@@ -1,0 +1,104 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fmodern\fcharset0 Courier-Oblique;}
+{\colortbl;\red255\green255\blue255;\red164\green160\blue78;\red23\green23\blue26;\red195\green123\blue90;
+\red71\green149\blue242;\red174\green176\blue183;\red89\green158\blue96;\red38\green157\blue169;}
+{\*\expandedcolortbl;;\csgenericrgb\c64314\c62745\c30588;\csgenericrgb\c9020\c9020\c10196;\csgenericrgb\c76471\c48235\c35294;
+\csgenericrgb\c27843\c58431\c94902;\csgenericrgb\c68235\c69020\c71765;\csgenericrgb\c34902\c61961\c37647;\csgenericrgb\c14902\c61569\c66275;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 @Test\
+    \cf4 public void \cf5 checkAirPods3SearchAndCompareName\cf6 () \cf4 throws \cf6 InterruptedException \{\
+        WebDriver driver = \cf4 new \cf6 ChromeDriver();\
+        driver.manage().window().maximize();\
+        driver.get(\cf7 "https://allo.ua"\cf6 );\
+        Thread.
+\f1\i sleep
+\f0\i0 (\cf8 3000\cf6 );\
+        WebElement alloLogo = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "//*[@class='v-logo']"\cf6 ));\
+        Assert.
+\f1\i assertTrue
+\f0\i0 (alloLogo.isDisplayed());\
+        WebElement searchInput = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "//*[@id='search-form__input']"\cf6 ));\
+        searchInput.sendKeys(\cf7 "AirPods 3"\cf6 );\
+        WebElement searchButton = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "//button[@type='submit' and @class='search-form__submit-button']"\cf6 ));\
+        searchButton.click();\
+        Thread.
+\f1\i sleep
+\f0\i0 (\cf8 3000\cf6 );\
+        WebElement firstProduct = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "(//a[@class='product-card__title' and contains(text(), 'AirPods 3')])[1]"\cf6 ));\
+        String productName = firstProduct.getText();\
+        Assert.
+\f1\i assertTrue
+\f0\i0 (productName.contains(\cf7 "AirPods 3"\cf6 ));\
+        firstProduct.click();\
+        Thread.
+\f1\i sleep
+\f0\i0 (\cf8 3000\cf6 );\
+        WebElement productTitle = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "//h1[@class='p-view__header-title']"\cf6 ));\
+        String productPageName = productTitle.getText();\
+        Assert.
+\f1\i assertEquals
+\f0\i0 (productPageName, productName, \cf7 "\uc0\u1053 \u1072 \u1079 \u1074 \u1072  \u1090 \u1086 \u1074 \u1072 \u1088 \u1091  \u1085 \u1072  \u1089 \u1090 \u1086 \u1088 \u1110 \u1085 \u1094 \u1110  \u1085 \u1077  \u1079 \u1073 \u1110 \u1075 \u1072 \u1108 \u1090 \u1100 \u1089 \u1103 !"\cf6 );\
+        driver.quit();\
+    \}\
+\
+    \cf2 @Test\
+    \cf4 public void \cf5 checkBuyersDeliveryAndPayment\cf6 () \cf4 throws \cf6 InterruptedException \{\
+        WebDriver driver = \cf4 new \cf6 ChromeDriver();\
+        driver.manage().window().maximize();\
+        driver.get(\cf7 "https://allo.ua"\cf6 );\
+        WebElement buyersButton = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "//a[contains(text(),'\uc0\u1055 \u1086 \u1082 \u1091 \u1087 \u1094 \u1103 \u1084 ')]"\cf6 ));\
+        Assert.
+\f1\i assertTrue
+\f0\i0 (buyersButton.isDisplayed(), \cf7 "\uc0\u1050 \u1085 \u1086 \u1087 \u1082 \u1072  '\u1055 \u1086 \u1082 \u1091 \u1087 \u1094 \u1103 \u1084 ' \u1085 \u1077  \u1074 \u1110 \u1076 \u1086 \u1073 \u1088 \u1072 \u1078 \u1072 \u1108 \u1090 \u1100 \u1089 \u1103 !"\cf6 );\
+        buyersButton.click();\
+        Thread.
+\f1\i sleep
+\f0\i0 (\cf8 1000\cf6 );\
+        WebElement dropDownMenu = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "//*[@class='mh-button__wrap active']"\cf6 ));\
+        Assert.
+\f1\i assertTrue
+\f0\i0 (dropDownMenu.isDisplayed(), \cf7 "Dropdown \uc0\u1084 \u1077 \u1085 \u1102  \u1085 \u1077  \u1074 \u1110 \u1076 \u1082 \u1088 \u1080 \u1083 \u1086 \u1089 \u1103 !"\cf6 );\
+        WebElement deliveryAndPayment = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "//a[contains(text(),'\uc0\u1044 \u1086 \u1089 \u1090 \u1072 \u1074 \u1082 \u1072  \u1110  \u1086 \u1087 \u1083 \u1072 \u1090 \u1072 ')]"\cf6 ));\
+        Assert.
+\f1\i assertTrue
+\f0\i0 (deliveryAndPayment.isDisplayed(), \cf7 "'\uc0\u1044 \u1086 \u1089 \u1090 \u1072 \u1074 \u1082 \u1072  \u1110  \u1086 \u1087 \u1083 \u1072 \u1090 \u1072 ' \u1085 \u1077  \u1074 \u1110 \u1076 \u1086 \u1073 \u1088 \u1072 \u1078 \u1072 \u1108 \u1090 \u1100 \u1089 \u1103 !"\cf6 );\
+        deliveryAndPayment.click();\
+        Thread.
+\f1\i sleep
+\f0\i0 (\cf8 2000\cf6 );\
+        String pageTitle = driver.getTitle();\
+        Assert.
+\f1\i assertTrue
+\f0\i0 (pageTitle.contains(\cf7 "\uc0\u1044 \u1086 \u1089 \u1090 \u1072 \u1074 \u1082 \u1072  \u1110  \u1086 \u1087 \u1083 \u1072 \u1090 \u1072 "\cf6 ), \cf7 "\uc0\u1058 \u1072 \u1081 \u1090 \u1083  \u1089 \u1090 \u1086 \u1088 \u1110 \u1085 \u1082 \u1080  \u1085 \u1077  \u1084 \u1110 \u1089 \u1090 \u1080 \u1090 \u1100  '\u1044 \u1086 \u1089 \u1090 \u1072 \u1074 \u1082 \u1072  \u1110  \u1086 \u1087 \u1083 \u1072 \u1090 \u1072 '"\cf6 );\
+        WebElement howToOrder = driver.findElement(By.
+\f1\i xpath
+\f0\i0 (\cf7 "//*[@class='sp-tablinks active']"\cf6 ));\
+        Assert.
+\f1\i assertTrue
+\f0\i0 (howToOrder.isDisplayed(), \cf7 "'\uc0\u1071 \u1082  \u1086 \u1092 \u1086 \u1088 \u1084 \u1080 \u1090 \u1080  \u1079 \u1072 \u1084 \u1086 \u1074 \u1083 \u1077 \u1085 \u1085 \u1103 ?' \u1085 \u1077  \u1074 \u1110 \u1076 \u1086 \u1073 \u1088 \u1072 \u1078 \u1072 \u1108 \u1090 \u1100 \u1089 \u1103 !"\cf6 );\
+        Assert.
+\f1\i assertEquals
+\f0\i0 (howToOrder.getText(), \cf7 "\uc0\u1071 \u1082  \u1086 \u1092 \u1086 \u1088 \u1084 \u1080 \u1090 \u1080  \u1079 \u1072 \u1084 \u1086 \u1074 \u1083 \u1077 \u1085 \u1085 \u1103 ?"\cf6 , \cf7 "\uc0\u1058 \u1077 \u1082 \u1089 \u1090  \u1077 \u1083 \u1077 \u1084 \u1077 \u1085 \u1090 \u1072  \u1085 \u1077  \u1079 \u1073 \u1110 \u1075 \u1072 \u1108 \u1090 \u1100 \u1089 \u1103 !"\cf6 );\
+        driver.quit();\
+    \}\
+\}\
+\
+}
